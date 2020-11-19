@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+
+body {
+    background-image: url(./imgs/american-heritage-chocolate-vdx5hPQhXFk-unsplash.jpg);
+    background-size: 1920px 1080px; 
+    margin: 0%;  
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    padding: 1px 0px;
+    text-align: center;
+    margin: 0px auto;
+    width: 100%;
+}
+
+img {
+    height: 30px;
+}
+
+#menu {
+    position: fixed;
+    right: 10px;
+    margin-top: 0;
+}
+
+.informacoes {
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Modak', cursive;
+    margin-top: 150px;
+    position: static;
+}
+
+#cabecalho {
+    position: relative;
+    height: 50px;
+    margin: 0%;
+}
+
+.bemvindo {
+    font-family: 'Modak', cursive;
+    width: 50%;
+    margin-left: 15px;
+}
