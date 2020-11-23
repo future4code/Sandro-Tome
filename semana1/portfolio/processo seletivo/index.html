@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Projeto Seletivo Labenu</title>
+    
+        <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&amp;display=swap" rel="stylesheet">
+    
+        <style type="text/css">
+            body, html {
+                margin: 0;
+                height: 100%;
+                background: rgb(86,94,153);
+            }
+            .cabecalho {
+                background-color: tomato;
+                background-size: cover;
+                background-position: center;
+                padding: 2px 0;
+                color: white;
+                text-align: center;
+                animation-name: fade;
+                animation-duration: 1s;
+            }
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+            .container {
+                width: 900px;
+                margin: 60px auto;
+            }
+            .card-white {
+                box-shadow: 0 0 16px rgba(0,0,0,0.1);
+                border-radius: 4px;
+                padding: 50px;
+                margin: 8px;
+                flex-grow: 1;
+                height: 100px;
+                text-align: center;
+            }
+            .cards {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 16px;
+                padding-top: 80px;
+            }
+            .footer {
+                background: rgb(216,216,216);
+                color: white;
+                padding: 1px 0px;
+                text-align: center;
+                margin: 0px auto;
+                position: relative;
+                clear: both;
+                bottom: 0;
+                width: 100%;
+            }
+            #card-green {
+              background: #94c47d;
+            }
+            #card-red {
+              background:  #e06666;
+            }
+            #card-blue {
+              background:  #6d9eeb;
+            }
+            h3 {
+              font-size: 28px;
+              color: whitesmoke;
+            }
+
+            @media (min-width: 200px) {
+              .container {
+                width: 300px;
+              }
+              .cards {
+                grid-template-columns: 1fr;
+              }
+              input[type=text]{
+                width: 300px;
+                height: 30px;
+              }
+              input[type=submit]{
+                background: tomato;
+                color: whitesmoke;
+                width: 80px;
+                height: 36px;
+              }
+            @media (min-width: 700px) {
+              .container {
+                width: 600px;
+              }
+              .cards {
+                grid-template-columns: 1fr 1fr;
+              }
+              input[type=text]{
+                width: 300px;
+                height: 30px;
+              }
+              input[type=submit]{
+                background: tomato;
+                color: whitesmoke;
+                width: 80px;
+                height: 36px;
+              }
+            @media (min-width: 1000px) {
+              .container {
+                width: 900px;
+              }
+              .cards {
+                grid-template-columns: 1fr 1fr 1fr;
+              }
+              input[type=text]{
+                width: 300px;
+                height: 30px;
+              }
+              input[type=submit]{
+                background: tomato;
+                color: whitesmoke;
+                width: 80px;
+                height: 36px;
+              }
+        </style>        
+        <script style="display: none;">var tvt = tvt || {}; tvt.captureVariables = function(a){for(var b=new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"undefined"!=typeof a[f])try{var g=[];c[f]=JSON.stringify(a[f],function(l,t){try{if("function"!==typeof t){if("object"===typeof t&&null!==t){if(t instanceof HTMLElement||t instanceof Node||-1!=g.indexOf(t))return;g.push(t)}return t}}catch(A){}})}catch(l){}a=document.createEvent("CustomEvent");a.initCustomEvent("TvtRetrievedVariablesEvent",!0,!0,{variables:c,date:b});window.dispatchEvent(a)};window.setTimeout(function() {tvt.captureVariables({'dataLayer.hide': (function(a){a=a.split(".");for(var b=window,c=0;c<a.length&&(b=b[a[c]],b);c++);return b})('dataLayer.hide'),'gaData': window['gaData'],'dataLayer': window['dataLayer']})}, 2000);</script>
+    </head>
+  
+    <body>
+    
+        <!-- Banner section -->
+        <div class="cabecalho">
+            <h1>Projeto Seletivo Labenu</h1>
+        </div>
+      
+        <div class="container">
+            <img src="Labenu_logo.png" alt="labenu.com.br" width="300">
+            <!-- Cards container -->
+          
+            <div class="cards">
+        
+              <!-- card green -->
+              <div class="card-white" id="card-green">          
+                <h3>Mobile Frontend</h3>
+              </div>
+        
+              <!-- card red -->
+              <div class="card-white" id="card-red">
+                <h3>Data Science</h3>
+              </div>
+        
+              <!-- card blue -->
+              <div class="card-white" id="card-blue">
+                <h3>Web Full Stack</h3>
+              </div>
+            </div>
+        </div>
+      
+        <!-- Footer section -->
+        <div class="footer">
+            <div class="container">
+                <form action="/action_page.php">
+                  <input type="text" id="lname" name="lname" placeholder="Coloque seu e-mail para contato! 😄">
+                  <input type="submit" value="Enviar">
+              </form>
+            </div>
+        </div>
+      
+        <script> </script>
+      </body>
+</html>

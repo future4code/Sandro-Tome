@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
 
 body {
-    background-color: rgb(217, 223, 224);
+    background-color: white;
     color: black;
     margin: 0;
     padding: 0;
@@ -9,13 +9,20 @@ body {
 }
 
 #head {
-    height: 800px;
+    height: 1000px;
+}
+
+#icon-pc {
+    margin: auto;
 }
 
 .name {
-    position: absolute;
-    padding: 150px;
-    padding-top: 250px;
+    padding: 350px;
+    display: flex;
+}
+
+#menu {
+    display: inline;
 }
 
 #menu ul {
@@ -30,4 +37,83 @@ body {
 
 h1 {
     font-size: 50px;
+}
+
+#about {
+    background-color: #f5f5ff;
+    padding: 0px;
+    margin: auto;
+    display: flex;
+    height: 500px;
+}
+
+#foto-perfil {
+    margin: auto;
+    border: 10px solid white;
+    border-radius: 50%;
+    height: 40vh;
+}
+
+#projects {
+    background-color: white;
+    padding: 0px;
+    margin: 0px;
+}
+
+#education-and-career {
+    background-color: #f5f5ff;
+    padding: 0px;
+    margin: 0px;
+}
+
+#contact {
+    background-color: white;
+    padding: 0px;
+    margin: 0px;
+}
+
+.about-text {
+    padding: 50px;
+    width: 40%;
+}
+
+.content-projects {
+    padding: 50px;
+}
+
+.education {
+    padding: 50px;
+}
+
+.career {
+    padding: 50px;
+}
+
+.contact-info {
+    padding: 50px;
+}
+
+.contact-links {
+    padding-top: 15px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.project-1 {
+    background-image: url(./imgs/Projeto-Seletivo-Labenu.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    padding: 300px;
+    margin: 20px;
+}
+
+.project-2 {
+    background-color: #f5f5ff;
+    padding: 300px;
+    margin: 20px;
+    border-radius: 10px;
 }
