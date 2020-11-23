@@ -138,6 +138,14 @@ td button {
     background-color: #635a3d
 }
 
+.button-comprar:hover {
+    background-color: orange;
+}
+
+.button-comprar:active {
+    color: whitesmoke;
+}
+
 img {
     width: 60px;
 }
