@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 50px 1fr 35px;
+    background-color: #45525b;
+}
+
+header {
+    background-color: #f9b24e;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: whitesmoke;
+}
+
+input {
+    height: 50%;
+    width: 35%;
+    display: grid;
+    align-self: center;
+    justify-self: end;
+    margin: 5px 60px;
+    border-radius: 10px;        
+}
+
+h1, h2 {
+    margin: 5px 60px;
+}
+
+#main-container {
+    background-color: #45525b;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+#main-container-player {
+    background-color: #45525b;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-self: center;
+    margin-top: 25px;
+    color: whitesmoke;
+}
+
+video {
+    width: 50vw;
+}
+
+.cards{
+    display: grid;
+    grid-template-rows: 20vh 1fr;
+    margin: 26px;
+    color: whitesmoke;
+}
+
+.video-1 {
+    background-image: url(./video5.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.video-2 {
+    background-image: url(./video2.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.video-3 {
+    background-image: url(./video3.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.video-4 {
+    background-image: url(./video4.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.video-5 {
+    background-image: url(./video5.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.video-6 {
+    background-image: url(./video6.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.video-7 {
+    background-image: url(./video7.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.video-8 {
+    background-image: url(./video8.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #f9b24e;
+    color: whitesmoke;
+    margin: 0px;
+}
