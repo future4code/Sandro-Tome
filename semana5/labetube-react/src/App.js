@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import youtube from './youtube.png'
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <div className="tela-inteira">
         <header>
-            <h1>Lab Tube</h1>
+            <h1><img src={youtube} width='40px' />Lab Tube</h1>
             <input type="text" placeholder="Busca" id="campoDeBusca" />
         </header>
 
