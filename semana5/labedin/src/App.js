@@ -1,0 +1,79 @@
+import React from 'react';
+import './App.css';
+import eu from './eu.jpg'
+import CardGrande from './components/CardGrande/CardGrande';
+import CardPequeno from './components/CardPequeno/CardPequeno'
+import ImagemButton from './components/ImagemButton/ImagemButton';
+
+function App() {
+  return (
+    <div className="App">
+      <div className="page-section-container">
+        <h2>Dados pessoais</h2>
+        <CardGrande 
+          imagem={eu} 
+          nome="Sandro Tomé" 
+          descricao="Oi, eu sou o Sandro. Atualmente estudo na Labenu, uma escola de formação de desenvolvedores web."
+        />
+        
+        <ImagemButton 
+          imagem="https://image.flaticon.com/icons/png/512/117/117472.png" 
+          texto="Ver mais"
+        />
+      </div>
+
+      <div className="page-section-container">
+        <h2>Contato</h2>
+        <CardPequeno 
+          imagem="https://www.flaticon.com/svg/static/icons/svg/732/732200.svg" 
+          nome="E-mail" 
+          descricao="sandrotome.jr@gmail.com" 
+        />
+      </div>
+
+      <div className="page-section-container">
+        <h2>Experiências profissionais</h2>
+        <CardGrande 
+          imagem="data:image/jpeg;base64,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" 
+          nome="Gestor de Tráfego - Autônomo" 
+          descricao="Através das ferramentas Facebook Ads e Google Ads, ajudo pessoas e empresas e venderem mais e se posicionarem melhor através da internet." 
+        />
+        
+        <CardGrande 
+          imagem="https://media.glassdoor.com/sqll/2482780/prefeitura-municipal-de-curitiba-squarelogo-1551670721032.png" 
+          nome="Prefeitura Municipal de Curitiba - Estagiário" 
+          descricao="Levantamento, mapeamento e diagnóstico de ocupações irregulares na município de Curitiba, demais atividades pertinentes como alterações de cadastro e organização de arquivos." 
+        />
+        
+        <CardGrande 
+          imagem="https://media-exp1.licdn.com/dms/image/C4D0BAQFRByN7ZvShOg/company-logo_200_200/0/1554742604417?e=1616025600&v=beta&t=wQ7ba6e_brkl1YpJ5b0hnO4SCmRGIezYswtMfk27Xho" 
+          nome="Arquitetare Elaine Zanon & Claudia Machado - Estagiário" 
+          descricao="Auxiliar no desenvolvimento de projetos arquitetônicos, perspectivas 3D, desenhos técnicos, acompanhamento das aprovações nos órgãos competentes, organização de documentos, e contato junto aos fornecedores." 
+        />
+
+        <CardGrande 
+          imagem="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAflBMVEUAAAD///+enp7S0tLMzMxxcXHZ2dkKCgpPT0/i4uKurq7Dw8PJycm8vLypqamdnZ1kZGSRkZHq6uq/v7+Xl5cqKirx8fF6eno8PDz5+fmrq6vs7OyKiopYWFi0tLRfX19paWkiIiKBgYE1NTVISEgnJycUFBQdHR0xMTFCQkJddQk9AAAGKklEQVR4nO2a65KqOhCFuYy3AUVQUWejoo6393/BQxrIPcpBq/apU+srf0Bok14h6YQGzwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP8io7/tgMJtGoaBXPCIw3hnmI2/QpXCUV8Z5X7FZD92GCRhOOvi2KhyLIxdtXjlUPjyc3hWUcr8+ZYKouo8NMy+fB1rbbs/wmB4tpqwS06/JWZUSe66HCrO5K4Or0jI4iEK3lGYqiZri8moq8K8rmPjuDzU3Jk4p0atcCgK3lA40G0Gpk1XheOmisBxXVfoT1w11Qr9OS9wK8zSQGBx8la3xGRd1xM6ORpGXRV+v3CcKRyuiaRWu3yu8E8HhfELp6asIh5FAnYWGUZdFbJBGjPblf36UG5rxwy3jpqCpq/4VHUr/HruE/ku2bCKfGN2dFRIg9RjcSu1GzCFIkCumbm5AhCtQj6veiukVqTAcGfnJ92qo8IZBYdvNUTIqArpljuGKVfYmvdWuFcGe0VWFex1q44Kc7p7B+swIDSFka2tGqYwpwF1Fra9FIb6VGXTaKFbdVO4YVb3evG0L3WawkV1OrXXFVC82gpZvRVqbdY1GaGmm0LmVeZ0xtIaC92OhaVWeGLtHrhfvRUq+7E3FGaNw2s5Qhit/fCzObObWw0bhVRlxv3qtVp8UOGZGf1WB1d2YNsaqQrv2xerRaXwwEf8kxU/CZIKtt4nlv6a2BQavdJJIVukcy7E2rPsQvQYE/XuwLGstArrnWzrV4dd28MwMRQueiuc8MiYuoapsWtzrCpC4apdMToqNJ38nMKLmFXklmV7a+68nbW1CuuN4Lmzwt/XCqd9Fco3jgUIY8nxDIVPHjm5Qlp7wmcK8/2UYxn0VoVG/O2iUJ58P749hpDCSUX+/A7KCot6QHwulloVXl8rpGeUdp2nTbXlGV60Rlpdj5GerJD2uTnNns+sh/ueCmlxztoMAVsILPsxsVpQH5gPMRxJIS2bs7d2bT9yQV+FTYKikbWwD1NpT0M30fGQ5SkKRe6j1yiN9c5e9FTYerGlkUqJA/PBSFJY+nrLCrLC81sKjWkX2sLga4UnESEzpsz3tf0uIe9LWbx1PIJ4qkIaV70VBvpwYjPIeGZ7rZAWpqBJRMU36igz5RZKCmn36lwvFIXeOwppGpfifGDV8lqhX3s0a3xZ0twxtlCyQoqR9g26pyss3lBI9yx3nja8VEgdk1QHF3mXYdwhRSG5/Wpf2pA9UfgkIhO0Fcku9cmZajITCyPrHZGIhMFc5Jcz3UxR6HV4tmjZPVHoD2Us477OIMZFOUi/7H41CjO5olDVy67zZMiSS9Q7RVVIdkZOqCZRFdZSumSELeP+ulUttheHQhXl2Zxms3D9GjdGyVOFnqM/W4XypcsbCr3RRDawJtpfKaSkq7z8Na9C9GVHU8i2r35pVTjQBbHZZI7Ab8Mv+zuTIufXHYPGVKgYZmbVbAhu9VHKpqsUW662+9wwPmj72t3cllotBxquFXYXRF/xdOkMl3e9IjVdcK5Krvp/0v1NLxppfzxW/3M1CQAAAAAAAAAAgP8vI/vJSnrDc5M+kD2uhM1Nfgu0EQmJ68qSeaNyKUMxkt4DHldSNuPjH1YXPHfje788F8Y+w2iPB/uUf4P0G6YRz8tMlhHPGi2KKU+mRGkg3g/NRK7rK9nzr57GUcHTzrcwnYrMy6TLR7f/hhNPRkXTe5vCGlUe8j5eVEZlc/w7uy7bY2/vndoPYNYl2TXlx7tImgfiReOUfvx43KbJbz+3NU+mDUrlzeQHEAr3RcrbrDqej7TKmbJV8ohnInU5XHK/irHsfTHho24dxzyFqCnctP15jZfiRUkcONK9vRGjdOENeRpyujvwW5KsN3Hr8Tjx9rxLpO/njtG5SEX5intc1cLfNEabAe+e0/K+aEfJceYt2264f3s71+fQPXnwcLHzVuLDkkL6TnCQ8AhxrCzm4g+CS1J6UvnhKo53bew4FFKe8xDw+DWqBkD7781ZagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC7+AVt/Qq5JoIVDAAAAAElFTkSuQmCC" 
+          nome="Neolar incorporadora - Estagiário" 
+          descricao="Auxiliar no desenvolvimento de projetos arquitetônicos, perspectivas 3D, desenhos técnicos, acompanhamento das aprovações nos órgãos competentes, organização de documentos, e contato junto aos fornecedores." 
+        />
+      </div>
+
+      <div className="page-section-container">
+        <h2>Minhas redes sociais</h2>
+        <ImagemButton 
+          imagem="https://d2v9ipibika81v.cloudfront.net/uploads/sites/261/2017/01/facebook-logo-3.png" 
+          texto="Facebook"
+          link="www.facebook.com" 
+        />        
+
+        <ImagemButton 
+          imagem="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg" 
+          texto="LinkedIn"
+          link="https://www.linkedin.com/in/sandro-tome/" 
+        />        
+      </div>
+    </div>
+  );
+}
+
+export default App;
