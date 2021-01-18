@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
+import { axiosConfig, baseUrl } from '../../constantes'
 
 const CriadorPlaylistContainer = styled.div`
     margin: 0px 300px;
@@ -17,17 +19,36 @@ const FormCriadorPlaylist = styled.form `
 
 class CriadorPlaylist extends React.Component {
     state = {
+        valorInputNome: '',
+    }
 
+    mudaValorInputNome = (event) => {
+        this.setState({valorInputNome: event.target.value})
+    }
+
+    criarPlaylist = (event) => {
+        event.preventDefault()
+        const body = {
+            name: this.valorInputNome
+        }
+        axios.post(baseUrl, body, axiosConfig).then(response => {
+            console.log(response)
+        }).catch(error => [
+            console.log(error)
+        ])
     }
 
     render() {
         return (
             <CriadorPlaylistContainer>
                 <h1>Cadastre sua Playlist</h1>
-                <FormCriadorPlaylist>
+                <FormCriadorPlaylist onSubmit={this.criarPlaylist}>
                     <label>Nova Playlist</label>
                     <input
                         placeholder='Nome da playlist'
+                        type='text'
+                        value={this.state.valorInputNome}
+                        onChange={this.mudaValorInputNome}
                     />
                     <button type='submit'>Cadastrar Playlist</button>
                 </FormCriadorPlaylist>
