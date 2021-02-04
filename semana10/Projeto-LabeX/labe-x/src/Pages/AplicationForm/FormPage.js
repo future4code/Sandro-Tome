@@ -3,16 +3,16 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom";
 import { goToLoginPage } from "../../Routes/Coordinator";
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = () => {
+const FormPage = () => {
     const classes = useStyles();
     const history = useHistory()
 
@@ -46,31 +46,20 @@ const SignUp = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Cadastre-se
+          Preencha o formulário
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="completeName"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="Primeiro nome"
+                id="completeName"
+                label="Nome completo"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Sobrenome"
-                name="lastName"
-                autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>
@@ -89,13 +78,39 @@ const SignUp = () => {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Senha"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name="age"
+                label="Idade"
+                id="age"
               />
             </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="occupation"
+                label="Ocupação"
+                id="occupation"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="country"
+                label="País"
+                id="country"
+              />
+            </Grid>
+            <Grid item xs={12}>
+                <FormControl>
+                    <InputLabel fullWidth id="selecao-viagens">Viagens</InputLabel>
+                    <Select>
+                        <p>kkkkkkkasdddddddddddddddddddddd</p>
+                    </Select>
+                </FormControl>
+            </Grid>    
           </Grid>
           <Button
             type="submit"
@@ -105,19 +120,12 @@ const SignUp = () => {
             className={classes.submit}
             onClick={() => goToLoginPage(history)}
           >
-            Cadastrar
+            Tudo certo!
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2" onClick={() => goToLoginPage(history)}>
-                Já possui uma conta? Entre por aqui
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
     </Container>
   );
 }
 
-export default SignUp;
+export default FormPage;

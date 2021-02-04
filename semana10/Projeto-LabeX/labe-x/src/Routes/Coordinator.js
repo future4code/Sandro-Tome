@@ -25,3 +25,7 @@ export const goToCreateTravelPage = (history) => {
 export const goToListTravelPage = (history) => {
     history.push("/login/gerenciador/viagens-criadas");
   };
+
+export const goToFormPage = (history) => {
+    history.push("/viagens-disponiveis/aplicacao");
+  };

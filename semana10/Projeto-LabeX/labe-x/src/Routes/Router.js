@@ -1,12 +1,13 @@
 import React from "react";
 import HomePage from "../Pages/Home/HomePage";
-import OnTravelsPage from "../Pages/AvailablesTravels/AvailablesTravelsPage";
+import AvailablesTravels from "../Pages/AvailablesTravels/AvailablesTravelsPage";
 import Login from "../Pages/Login/LoginPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ManagePage from "../Pages/ManagePage/ManagePage";
 import SignUp from "../Pages/SignUp/SignUpPage";
 import CreateTravel from "../Pages/ManagePage/CreateTravel/CreateTravelPage";
 import ListTravel from "../Pages/ManagePage/ListTravel/ListTravelPage";
+import FormPage from "../Pages/AplicationForm/FormPage";
 
 
 export default function Router() {
@@ -17,7 +18,10 @@ export default function Router() {
           <HomePage />
         </Route>
         <Route exact path={"/viagens-disponiveis"}>
-          <OnTravelsPage />
+          <AvailablesTravels />
+        </Route>
+        <Route exact path={"/viagens-disponiveis/aplicacao"}>
+          <FormPage />
         </Route>
         <Route exact path={"/login"}>
           <Login />
