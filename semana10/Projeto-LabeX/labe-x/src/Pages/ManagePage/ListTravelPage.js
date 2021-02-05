@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ManagePage = () => {
+const ListTravelPage = () => {
   const history = useHistory();
 
   const classes = useStyles();
@@ -120,7 +120,6 @@ const ManagePage = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -204,7 +203,7 @@ const ManagePage = () => {
             {/* Card para fomularios de criaçao e aprovação, e lista de viagens */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <h1>Bem vindo</h1>
+                  <h1> Viagens criadas</h1>
               </Paper>
             </Grid>
           </Grid>
@@ -214,4 +213,4 @@ const ManagePage = () => {
   );
 }
 
-export default ManagePage;
+export default ListTravelPage;

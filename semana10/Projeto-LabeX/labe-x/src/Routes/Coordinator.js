@@ -26,6 +26,10 @@ export const goToListTravelPage = (history) => {
     history.push("/login/gerenciador/viagens-criadas");
   };
 
+export const  goToApprovePage = (history) => {
+  history.push("/login/gerenciador/aprovacao");
+};
+
 export const goToFormPage = (history) => {
     history.push("/viagens-disponiveis/aplicacao");
   };

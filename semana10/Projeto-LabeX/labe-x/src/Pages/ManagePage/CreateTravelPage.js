@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
+import TextField from '@material-ui/core/TextField';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -24,7 +26,10 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import Avatar from '@material-ui/core/Avatar';
+import FlightTakeoffOutlinedIcon from '@material-ui/icons/FlightTakeoffOutlined';
 import { useHistory } from "react-router-dom";
+import useInput from "../../Hooks/useInput";
 import { goToManagePage, goToCreateTravelPage, goToLoginPage, goToListTravelPage, goToApprovePage} from "../../Routes/Coordinator";
 
 
@@ -99,27 +104,71 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(8),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
+    alignItems: 'center',
   },
   fixedHeight: {
     height: 240,
   },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', 
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
-const ManagePage = () => {
+const CreateTravelPage = () => {
   const history = useHistory();
 
+  const [inputTravel, onChangeInputTravel] = useInput({
+    name: "", 
+    planet: "", 
+    date: "", 
+    description: "", 
+    durationInDays: ""
+  })
+
+  const token = localStorage.getItem("token")
+
   const classes = useStyles();
+
   const [open, setOpen] = React.useState(true);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const createTravel = (event) => {
+    event.preventDefault()
+
+    axios
+    .post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/sandro-epps/trips", inputTravel,
+      {
+        headers: {
+          auth: token
+        }
+      }
+    )
+    .then((res) => {
+      goToListTravelPage(history)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+  }
 
   return (
     <div className={classes.root}>
@@ -204,7 +253,88 @@ const ManagePage = () => {
             {/* Card para fomularios de criaçao e aprovação, e lista de viagens */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <h1>Bem vindo</h1>
+              <Avatar className={classes.avatar}>
+                <FlightTakeoffOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Crie uma viagem
+              </Typography>
+                <form className={classes.form} noValidate onSubmit={createTravel}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={inputTravel.name}
+                        onChange={onChangeInputTravel}
+                        autoComplete="fname"
+                        name="travelName"
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="travelName"
+                        label="Nome da viagem"
+                        autoFocus
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={inputTravel.planet}
+                        onChange={onChangeInputTravel}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        name="planet"
+                        label="Planeta"
+                        id="planet"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={inputTravel.date}
+                        onChange={onChangeInputTravel}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        name="date"
+                        label="Data"
+                        id="date"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={inputTravel.durationInDays}
+                        onChange={onChangeInputTravel}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        name="duration"
+                        label="Duração (em dias)"
+                        id="duration"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <TextField
+                      value={inputTravel.description}
+                      onChange={onChangeInputTravel}
+                      label="Descrição (opcional)"
+                      id="outlined-size-normal"
+                      variant="outlined"
+                      fullWidth
+                    />
+                    </Grid>    
+                  </Grid>
+                  <Grid container>
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      className={classes.submit}
+                      onClick={() => goToLoginPage(history)}
+                    >
+                      Tudo certo!
+                    </Button>
+                  </Grid>
+                </form>
               </Paper>
             </Grid>
           </Grid>
@@ -214,4 +344,4 @@ const ManagePage = () => {
   );
 }
 
-export default ManagePage;
+export default CreateTravelPage;

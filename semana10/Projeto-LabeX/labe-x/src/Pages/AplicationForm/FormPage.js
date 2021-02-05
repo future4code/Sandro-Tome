@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import FlightTakeoffOutlinedIcon from '@material-ui/icons/FlightTakeoffOutlined';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -92,7 +92,7 @@ const FormPage = () => {
       <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <FlightTakeoffOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Preencha o formulário
