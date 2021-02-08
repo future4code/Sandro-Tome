@@ -24,13 +24,25 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { goToManagePage, goToCreateTravelPage, goToLoginPage, goToListTravelPage, goToApprovePage} from "../../Routes/Coordinator";
+import { useTravelList } from '../../Hooks/useTravelsList';
 
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  '@global': {
+    ul: {
+      margin: 0,
+      padding: 0,
+      listStyle: 'none',
+    },
+    a: {
+      textDecoration: 'none',
+      color: 'inherit',
+    }
+  },
   root: {
     display: 'flex',
   },
@@ -111,8 +123,10 @@ const useStyles = makeStyles((theme) => ({
 
 const ListTravelPage = () => {
   const history = useHistory();
-
   const classes = useStyles();
+  const travels = useTravelList()
+
+
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -203,7 +217,18 @@ const ListTravelPage = () => {
             {/* Card para fomularios de criaçao e aprovação, e lista de viagens */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                  <h1> Viagens criadas</h1>
+                <List component="nav">
+                  {travels.map((travel) => {
+                    return <Link to={`/gerenciador/aprovacao/${travel.id}`} >
+                    <ListItem button>
+                      <ListItemText primary={travel.name} />
+                    </ListItem>
+                  </Link>
+                  })}
+                </List>
+                <Link to={'/gerenciador/criar-viagem'}>
+                  <Button variant={'contained'} color={'primary'}>Criar viagem</Button>
+                </Link>
               </Paper>
             </Grid>
           </Grid>

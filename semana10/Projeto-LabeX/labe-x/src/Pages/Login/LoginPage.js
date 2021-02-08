@@ -87,7 +87,7 @@ const LoginPage = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      history.push("/login/gerenciador");
+      history.push("/gerenciador");
     }
   }, [history]);
 
@@ -104,7 +104,7 @@ const LoginPage = () => {
       )
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        history.push("/login/gerenciador");
+        history.push("/gerenciador");
       })
       .catch((err) => {
         console.log(err);

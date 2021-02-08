@@ -30,16 +30,16 @@ export default function Router() {
         <Route exact path={"/cadastro"}>
           <SignUp />
         </Route>
-        <Route exact path={"/login/gerenciador"}>
+        <Route exact path={"/gerenciador"}>
           <ManagePage />
         </Route>
-        <Route exact path={"/login/gerenciador/viagens-criadas"}>
+        <Route exact path={"/gerenciador/viagens-criadas"}>
           <ListTravel />
         </Route>
-        <Route exact path={"/login/gerenciador/criar-viagem"}>
+        <Route exact path={"/gerenciador/criar-viagem"}>
           <CreateTravel />
         </Route>
-        <Route exact path={"/login/gerenciador/aprovacao"}>
+        <Route exact path={"/gerenciador/aprovacao/:id"}>
           <ApproveTravel />
         </Route>
       </Switch>

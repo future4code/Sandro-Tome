@@ -11,7 +11,7 @@ export const goToOnTravelsPage = (history) => {
   };
 
 export const goToManagePage = (history) => {
-    history.push("/login/gerenciador");
+    history.push("/gerenciador");
   };
 
 export const goToSignUpPage = (history) => {
@@ -19,15 +19,15 @@ export const goToSignUpPage = (history) => {
   };
 
 export const goToCreateTravelPage = (history) => {
-    history.push("/login/gerenciador/criar-viagem");
+    history.push("/gerenciador/criar-viagem");
   };
 
 export const goToListTravelPage = (history) => {
-    history.push("/login/gerenciador/viagens-criadas");
+    history.push("/gerenciador/viagens-criadas");
   };
 
 export const  goToApprovePage = (history) => {
-  history.push("/login/gerenciador/aprovacao");
+  history.push("/gerenciador/aprovacao/:id");
 };
 
 export const goToFormPage = (history) => {

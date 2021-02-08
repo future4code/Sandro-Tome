@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -24,8 +24,11 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { goToManagePage, goToCreateTravelPage, goToLoginPage, goToListTravelPage, goToApprovePage} from "../../Routes/Coordinator";
+import TravelInfo from './TravelDatail/TravelInfoCard';
+import CandidatesList from './TravelDatail/CandidatesList';
+import axios from 'axios';
 
 
 const drawerWidth = 240;
@@ -100,9 +103,9 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
+    display: 'grid',
+    gridTemplateColumns: '1fr 2fr',
+    gap: '32 px',
   },
   fixedHeight: {
     height: 240,
@@ -111,6 +114,19 @@ const useStyles = makeStyles((theme) => ({
 
 const ApprovePage = () => {
   const history = useHistory();
+
+  const [travel, setTravel] = useState()
+  const params = useParams()
+
+  useEffect(() =>{
+    axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/sandro-epps/trip/${params.id}`, {
+      headers: {
+        auth: window.localStorage.getItem('token')
+      }
+    }).then((response) => {
+      setTravel(response.data.trip)
+    })
+  },[])
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -201,11 +217,14 @@ const ApprovePage = () => {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Card para fomularios de criaçao e aprovação, e lista de viagens */}
-            <Grid item xs={12}>
+            {travel ? <Grid item xs={12}>
               <Paper className={classes.paper}>
-                  <h1>Lista de Aprovações </h1>
+                  <TravelInfo
+                    info={travel}/>
+                  <CandidatesList
+                    candidates={travel.candidates} travelId={params.id}/>
               </Paper>
-            </Grid>
+            </Grid> : <div>Carregando...</div>}
           </Grid>
         </Container>
       </main>

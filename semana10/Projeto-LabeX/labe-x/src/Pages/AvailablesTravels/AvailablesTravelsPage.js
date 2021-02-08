@@ -90,17 +90,14 @@ const AvailablesTravels = () => {
           </Button>
         </Toolbar>
       </AppBar>
-      {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
           Viagens
         </Typography>
       </Container>
-      {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {travels.map((travel) => (
-            // Enterprise card is full width at sm breakpoint
             <Grid item key={travel.title} xs={12} sm={travel.title === 'Enterprise' ? 12 : 6} md={4}>
               <Card>
                 <CardHeader

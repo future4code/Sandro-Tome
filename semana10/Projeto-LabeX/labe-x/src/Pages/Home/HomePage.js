@@ -2,7 +2,7 @@ import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import FlightTakeoffOutlinedIcon from '@material-ui/icons/FlightTakeoffOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -38,7 +38,7 @@ const HomePage = () => {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <FlightTakeoffOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           LabeX - O espaço não é a fronteira final

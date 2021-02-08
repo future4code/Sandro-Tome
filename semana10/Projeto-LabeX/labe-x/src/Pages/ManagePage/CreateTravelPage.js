@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -29,8 +29,9 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import Avatar from '@material-ui/core/Avatar';
 import FlightTakeoffOutlinedIcon from '@material-ui/icons/FlightTakeoffOutlined';
 import { useHistory } from "react-router-dom";
-import useInput from "../../Hooks/useInput";
+import { useForm } from "../../Hooks/useForm";
 import { goToManagePage, goToCreateTravelPage, goToLoginPage, goToListTravelPage, goToApprovePage} from "../../Routes/Coordinator";
+import { useProtectedPage } from '../../Hooks/useProtectedPage';
 
 
 const drawerWidth = 240;
@@ -128,47 +129,55 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateTravelPage = () => {
   const history = useHistory();
-
-  const [inputTravel, onChangeInputTravel] = useInput({
-    name: "", 
-    planet: "", 
-    date: "", 
-    description: "", 
-    durationInDays: ""
-  })
-
-  const token = localStorage.getItem("token")
-
   const classes = useStyles();
-
-  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const [open, setOpen] = React.useState(true);
 
-  const createTravel = (event) => {
-    event.preventDefault()
+  const [form, onChangeInput] = useForm({
+    name: '',
+    planet: '',
+    description: '',
+    duration: ''
+  })
+
+  useProtectedPage()
+
+  const [date, setDate] = useState(new Date());
+
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    const formattedDate = `${date.getDate()}/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}`;
+
+    const body = {
+      name: form.name,
+      planet: form.planet,
+      date: formattedDate,
+      description: form.description,
+      durationInDays: form.duration,
+    };
 
     axios
-    .post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/sandro-epps/trips", inputTravel,
-      {
-        headers: {
-          auth: token
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/sandro-epps/trips",
+        body,
+        {
+          headers: {
+            auth: window.localStorage.getItem("token"),
+          },
         }
-      }
-    )
-    .then((res) => {
-      goToListTravelPage(history)
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
-  }
+      )
+      .then((response) => {
+        history.push("/gerenciador/viagens-criadas");
+      });
+  };
 
   return (
     <div className={classes.root}>
@@ -259,66 +268,60 @@ const CreateTravelPage = () => {
               <Typography component="h1" variant="h5">
                 Crie uma viagem
               </Typography>
-                <form className={classes.form} noValidate onSubmit={createTravel}>
+                <form className={classes.form} onSubmit={onSubmitForm}>
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
                       <TextField
-                        value={inputTravel.name}
-                        onChange={onChangeInputTravel}
                         autoComplete="fname"
                         name="travelName"
-                        variant="outlined"
                         required
                         fullWidth
                         id="travelName"
                         label="Nome da viagem"
                         autoFocus
+                        onChange={onChangeInput}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        value={inputTravel.planet}
-                        onChange={onChangeInputTravel}
-                        variant="outlined"
                         required
                         fullWidth
                         name="planet"
                         label="Planeta"
                         id="planet"
+                        onChange={onChangeInput}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        value={inputTravel.date}
-                        onChange={onChangeInputTravel}
-                        variant="outlined"
                         required
                         fullWidth
                         name="date"
-                        label="Data"
                         id="date"
+                        type="date"
+                        value={date}
+                        onChange={date => setDate(date)}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        value={inputTravel.durationInDays}
-                        onChange={onChangeInputTravel}
-                        variant="outlined"
                         required
                         fullWidth
+                        type='number'
                         name="duration"
                         label="Duração (em dias)"
                         id="duration"
+                        onChange={onChangeInput}
                       />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField
-                      value={inputTravel.description}
-                      onChange={onChangeInputTravel}
                       label="Descrição (opcional)"
                       id="outlined-size-normal"
-                      variant="outlined"
                       fullWidth
+                      multiline
+                      rows={4}
+                      onChange={onChangeInput}
                     />
                     </Grid>    
                   </Grid>
